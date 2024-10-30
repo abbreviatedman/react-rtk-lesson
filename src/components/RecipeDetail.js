@@ -1,38 +1,22 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { updateRecipe, deleteRecipe } from "../slices/recipesSlice";
 
 function RecipeDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const recipe = useSelector((state) =>
-    state.recipes.find((recipe) => recipe.id === id)
-  );
 
   const [editing, setEditing] = useState(false);
-  const [name, setName] = useState(recipe.name);
-  const [ingredients, setIngredients] = useState(recipe.ingredients);
 
   function handleSave() {
-    dispatch(updateRecipe({ id, name, ingredients }));
-    setEditing(false);
   }
 
   function handleDelete() {
-    dispatch(deleteRecipe(id));
-    navigate("/");
   }
 
   function handleAddIngredient() {
-    setIngredients([...ingredients, ""]);
   }
 
   function handleIngredientChange(index, value) {
-    const newIngredients = ingredients.slice();
-    newIngredients[index] = value;
-    setIngredients(newIngredients);
   }
 
   return (

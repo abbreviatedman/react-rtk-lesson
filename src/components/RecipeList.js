@@ -1,11 +1,7 @@
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import RecipeItem from "./RecipeItem";
 
 function RecipeList() {
-  const recipes = useSelector((state) => state.recipes);
-  const view = useSelector((state) => state.preferences.view);
-
   const listStyles = {
     display: "flex",
     flexDirection: "column",

@@ -1,15 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { sortRecipes } from "../slices/recipesSlice";
-
 function RecipeActions() {
-  const dispatch = useDispatch();
-  const categories = useSelector((state) => {
-    const allCategories = state.recipes.map((recipe) => recipe.category);
-    return [...new Set(allCategories)];
-  });
-
   function handleSort(event) {
-    dispatch(sortRecipes(event.target.value));
   }
 
   return (
